@@ -5,56 +5,30 @@ const apiClient = axios.create({
   withCredentials: true,
 });
 
-// export const handleCsrfToken = async () => {
-//   try {
-//     const res = await apiClient.get(`/api/csrf-token`, {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-//     return res?.data?.csrfToken;
-//   } catch (error) {
-//     console.error(
-//       'Error getting CSRF token. Please reload the browser.',
-//       error
-//     );
-//     throw error;
-//   }
-// };
-
-// handleCsrfToken()
-//   .then((csrfToken) => {
-//     apiClient.defaults.headers.common['X-CSRF-Token'] = csrfToken;
-//     apiClient.defaults.headers.common['Content-Type'] = 'application/json';
-//   })
-//   .catch((error) => {
-//     console.error('CSRF token not found in cookies', error);
-//   });
-
-export const login = async (data) => {
+export const handleCsrfToken = async () => {
   try {
-    return await apiClient.post('/api/login', data);
-  } catch (exception) {
-    return {
-      error: true,
-      exception,
-    };
-  }
-};
-
-export const register = async (data, authToken) => {
-  try {
-    return await apiClient.post('/api/register', data, {
+    const res = await apiClient.get(`/api/csrf-token`, {
       headers: {
-        Authorization: `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
       },
     });
-  } catch (exception) {
-    return {
-      error: true,
-      exception,
-    };
+    return res?.data?.csrfToken;
+  } catch (error) {
+    console.error(
+      'Error getting CSRF token. Please reload the browser.',
+      error
+    );
+    throw error;
   }
 };
+
+handleCsrfToken()
+  .then((csrfToken) => {
+    apiClient.defaults.headers.common['X-CSRF-Token'] = csrfToken;
+    apiClient.defaults.headers.common['Content-Type'] = 'application/json';
+  })
+  .catch((error) => {
+    console.error('CSRF token not found in cookies', error);
+  });
 
 export default apiClient;

@@ -5,6 +5,7 @@ import { createSelector } from 'reselect';
 import toast, { Toaster } from 'react-hot-toast';
 import { default as axios } from './api';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Loading from './components/utils/Loading';
 
 const selectAuth = (state) => state.auth.userDetails;
@@ -17,8 +18,13 @@ const AppRoutes = ({ auth, setLoading, toast, axios }) => {
         path="/"
         element={<Login axios={axios} setLoading={setLoading} toast={toast} />}
       />
-      {/* <Route path="/register" element={<Register />} />
-      <Route path="/error" element={<Error />} />
+      <Route
+        path="/register"
+        element={
+          <Register axios={axios} setLoading={setLoading} toast={toast} />
+        }
+      />
+      {/* <Route path="/error" element={<Error />} />
       <Route
         path="/forgot"
         element={<Forgot setLoading={setLoading} toast={toast} axios={axios} />}

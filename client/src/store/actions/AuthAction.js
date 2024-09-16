@@ -1,4 +1,5 @@
-import * as api from '../../api';
+import { login as apiLogin } from '../../functions/authentication/Login';
+import { register as apiRegister } from '../../functions/authentication/Register';
 import toast from 'react-hot-toast';
 
 export const AuthAction = {
@@ -9,8 +10,7 @@ export const AuthAction = {
 export const getActions = (dispatch) => {
   return {
     login: (userDetails, navigate) => dispatch(login(userDetails, navigate)),
-    register: (userDetails, authToken) =>
-      dispatch(register(userDetails, authToken)),
+    register: (userDetails) => dispatch(register(userDetails)),
     setUserDetails: (userDetails) => dispatch(setUserDetails(userDetails)),
   };
 };
@@ -28,7 +28,7 @@ export const setUserDetails = (userDetails) => {
 
 const login = (userDetails, navigate) => {
   return async (dispatch) => {
-    const response = await api.login(userDetails);
+    const response = await apiLogin(userDetails);
     if (response.error) {
       dispatch(toast.error(response?.exception?.response?.data.message));
     } else {
@@ -40,17 +40,21 @@ const login = (userDetails, navigate) => {
   };
 };
 
-const register = (userDetails, authToken) => {
-  return async (dispatch) => {
+const register = (userDetails) => {
+  return async () => {
     try {
-      const response = await api.register(userDetails, authToken);
-      if (response.error) {
-        dispatch(toast.error(response?.exception?.response?.data.message));
+      const response = await apiRegister(userDetails);
+      if (response?.error) {
+        toast.error(
+          response?.exception?.response?.data?.message ||
+            'An error occurred during registration.'
+        );
       } else {
-        dispatch(toast.success(response.data.message));
+        toast.success(response?.data?.message || 'Registration successful.');
       }
     } catch (err) {
-      console.error('Error on creating new user. Please try again', err);
+      toast.error('An error occurred during registration. Please try again.');
+      console.error('Error on creating new user. Please try again.', err);
     }
   };
 };

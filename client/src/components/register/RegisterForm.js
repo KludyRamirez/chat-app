@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsBoxArrowUpRight, BsGithub, BsGoogle } from 'react-icons/bs';
 
-const LoginForm = ({
+const RegisterForm = ({
   username,
   setUsername,
   password,
   setPassword,
-  handleLogin,
+  handleRegister,
 }) => {
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -53,7 +53,18 @@ const LoginForm = ({
     <div className="w-[70%] flex flex-col gap-8">
       <div className="w-[100%] flex flex-col items-start gap-8">
         <div className="w-[100%] flex flex-col items-start gap-4">
-          <span className="text-[48px] text-blue-900">Get started now</span>
+          <div className="w-[100%] flex justify-start items-end">
+            <div className="w-[200px] h-[46px] bg-blue-700 rounded-[2px]">
+              <span className="text-[48px] text-white">What's </span>
+            </div>
+            <div className="w-[200px] h-[46px] bg-red-700 rounded-[2px] mb-[46px]">
+              <span className="text-[48px] text-white">new</span>
+            </div>
+            <div className="w-[200px] h-[46px] bg-orange-500 rounded-[2px]">
+              <span className="text-[48px] text-white">with you</span>
+            </div>
+          </div>
+
           <span className="text-[16px] text-blue-900">
             Enter credentials to access your account
           </span>
@@ -125,7 +136,10 @@ const LoginForm = ({
               onChange={handleTacCheckboxChange}
             />
             <div className=" text-[14px] text-blue-900">
-              Remember <span className="font-normal">Me</span>
+              I agree to{' '}
+              <span className="cursor-pointer font-semibold hover:underline">
+                Terms and Conditions
+              </span>
             </div>
           </div>
           <Link
@@ -137,7 +151,7 @@ const LoginForm = ({
         </div>
         <div className="mt-[-2px]">
           <button
-            onClick={handleLogin}
+            onClick={handleRegister}
             disabled={
               usernameError !== '' ||
               passwordError !== '' ||
@@ -147,14 +161,14 @@ const LoginForm = ({
             className={`p-3 border-[2px] border-blue-600 rounded-[16px] w-[100%] 
     bg-blue-600 transition-opacity duration-200 font-semibold text-white shadow-md`}
           >
-            Sign In
+            Sign Up
           </button>
         </div>
         <div className="flex justify-start items-center gap-2">
-          <span className="text-blue-900">Don't have an account?</span>
-          <Link to="/register">
+          <span className="text-blue-900">Already have account?</span>
+          <Link to="/">
             <div className="flex justify-start items-center gap-2 cursor-pointer hover:underline">
-              <span className="text-blue-900 font-semibold">Sign Up</span>
+              <span className="text-blue-900 font-semibold">Sign In</span>
               <BsBoxArrowUpRight className="mt-[-2px] text-blue-900 text-[16px]" />
             </div>
           </Link>
@@ -164,4 +178,4 @@ const LoginForm = ({
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

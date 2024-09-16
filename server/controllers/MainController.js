@@ -1,5 +1,12 @@
 //auth
 
-const { register } = require('../controllers/authentication/Register');
+const {
+  register,
+} = require('../controllers/authentication/RegisterController');
 
-exports.controllers = { register };
+const { login } = require('../controllers/authentication/LoginController');
+
+//csrf
+const { getCsrf } = require('../controllers/SecurityController');
+
+exports.controllers = { register, login, getCsrf };

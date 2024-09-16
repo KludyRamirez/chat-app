@@ -1,7 +1,7 @@
-const User = require('../../models/Users');
+const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const History = require('../../models/History');
+// const History = require('../../models/History');
 
 const login = async (req, res) => {
   try {
@@ -56,13 +56,13 @@ const login = async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000,
     });
 
-    await History.create({
-      userId: user._id,
-      typeOfNotif: 'Authentication',
-      actionOfNotif: 'Add',
-      message: `${user.username} has logged in successfully.`,
-      createdAt: new Date(),
-    });
+    // await History.create({
+    //   userId: user._id,
+    //   typeOfNotif: 'Authentication',
+    //   actionOfNotif: 'Add',
+    //   message: `${user.username} has logged in successfully.`,
+    //   createdAt: new Date(),
+    // });
 
     return res.status(200).json({
       userDetails: {

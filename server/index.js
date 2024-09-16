@@ -7,6 +7,8 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
+const { csrfErrorHandler } = require('./middlewares/VerifyCSRF');
+
 const PORT = process.env.PORT || process.env.API_PORT;
 const MONGO_URI = process.env.MONGO_URI;
 const CLIENT_URI = process.env.CLIENT_URI;
@@ -15,7 +17,7 @@ const app = express();
 const server = http.createServer(app);
 
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB');
     server.listen(PORT, () => {
@@ -51,3 +53,5 @@ fs.readdirSync(routePath).forEach((file) => {
     app.use('/api', route);
   }
 });
+
+app.use(csrfErrorHandler);

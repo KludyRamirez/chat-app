@@ -1,4 +1,4 @@
-const User = require('../../models/Users');
+const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 // const History = require('../../models/History');
 
@@ -18,15 +18,15 @@ const register = async (req, res) => {
       });
     }
 
-    const emailExists = await User.exists({
-      email: email,
-    });
+    // const emailExists = await User.exists({
+    //   email: email,
+    // });
 
-    if (emailExists) {
-      return res.status(409).json({
-        message: 'Sorry, that email already exists. Try another one.',
-      });
-    }
+    // if (emailExists) {
+    //   return res.status(409).json({
+    //     message: 'Sorry, that email already exists. Try another one.',
+    //   });
+    // }
 
     const latestUser = await User.findOne().sort({ uid: -1 }).limit(1);
 

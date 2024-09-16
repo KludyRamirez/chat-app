@@ -1,5 +1,4 @@
 const csurf = require('csurf');
-
 const csrfToken = csurf({ cookie: true });
 
 const csrfErrorHandler = (err, req, res, next) => {

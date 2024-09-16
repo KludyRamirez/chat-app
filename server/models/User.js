@@ -5,12 +5,10 @@ const userSchema = new mongoose.Schema(
   {
     uid: { type: Number },
     username: { type: String },
-    nickname: { type: String },
-    surname: { type: String },
-    email: { type: String },
     password: { type: String },
     role: {
       type: String,
+      default: 'Normal',
       enum: ['Normal', 'Premium', 'Administrator'],
     },
 
