@@ -52,31 +52,49 @@ const LoginForm = ({
   return (
     <div className="w-[70%] flex flex-col gap-8">
       <div className="w-[100%] flex flex-col items-start gap-8">
-        <div className="w-[100%] flex flex-col items-start gap-4">
-          <span className="text-[48px] text-blue-900">Get started now</span>
+        <div className="w-[100%] flex flex-col items-start gap-8">
+          <div className="w-[100%] flex justify-start items-end">
+            <div className="relative w-[200px] h-[48px] bg-blue-700 rounded-[2px]">
+              <span className="text-[46px] text-white">Blog</span>
+              <div className="absolute top-[-40px] left-[0px] w-[20px] h-[20px] rounded-[50%] bg-blue-700"></div>
+            </div>
+            <div className="relative w-[200px] h-[48px] bg-red-700 rounded-[2px] mb-[46px]">
+              <span className="text-[46px] text-white">me</span>
+              <div className="absolute top-[-40px] left-[0px] flex items-center gap-2">
+                <div className=" w-[14px] h-[14px] rounded-[50%] border-[2px] border-red-700"></div>
+                <div className=" w-[14px] h-[14px] rounded-[10%] border-[2px] border-red-700"></div>
+                <div className=" w-[14px] h-[14px] rounded-[50%] border-[2px] border-red-700"></div>
+              </div>
+            </div>
+            <div className="relative w-[200px] h-[48px] bg-orange-500 rounded-[2px]">
+              <span className="text-[46px] text-white">not</span>
+              <div className="absolute top-[-40px] right-[0px] w-[20px] h-[20px] rounded-[10%] bg-orange-500"></div>
+            </div>
+          </div>
+
           <span className="text-[16px] text-blue-900">
-            Enter credentials to access your account
+            Blog you and me anonymously
           </span>
         </div>
         <div className="w-[100%] flex justify-between items-center">
-          <div className="group cursor-pointer w-[254px] h-[54px] border-[1px] rounded-[16px] shadow-sm flex justify-center items-center gap-4 bg-white border-gray-300 hover:bg-blue-700 hover:border-blue-700">
-            <BsGoogle className="text-[20px] text-blue-900 group-hover:text-white" />
+          <div className="pl-7 group cursor-pointer w-[254px] h-[54px] border-[1px] rounded-[16px] shadow-sm flex justify-start items-center gap-6 bg-white border-gray-300 hover:bg-blue-600 hover:border-blue-600">
+            <BsGoogle className="text-[22px] text-blue-600 group-hover:text-white" />
             <span className="text-[14px] text-blue-900 group-hover:text-white">
-              Sign in with Google
+              Sign up with Google
             </span>
           </div>
-          <div className="group cursor-pointer w-[254px] h-[54px] border-[1px] rounded-[16px] shadow-sm flex justify-center items-center gap-4 bg-white border-gray-300 hover:bg-blue-700 hover:border-blue-700">
-            <BsGithub className="text-[22px] text-blue-900 group-hover:text-white" />
+          <div className="pl-7 group cursor-pointer w-[254px] h-[54px] border-[1px] rounded-[16px] shadow-sm flex justify-start items-center gap-6 bg-white border-gray-300 hover:bg-blue-600 hover:border-blue-600">
+            <BsGithub className="text-[24px] text-blue-600 group-hover:text-white" />
             <span className="text-[14px] text-blue-900 group-hover:text-white">
-              Sign in with GitHub
+              Sign up with GitHub
             </span>
           </div>
         </div>
 
         <div className="w-[100%] flex justify-center items-center gap-4">
-          <div className="w-[50%] h-[1px] bg-gray-200"></div>
-          <span className="text-blue-900 font-semibold"> or </span>
-          <div className="w-[50%] h-[1px] bg-gray-200"></div>
+          <div className="w-[50%] h-[1px] bg-gray-100"></div>
+          <span className="text-blue-900"> or </span>
+          <div className="w-[50%] h-[1px] bg-gray-100"></div>
         </div>
       </div>
       <div className="w-[100%] flex flex-col gap-8">
@@ -151,10 +169,14 @@ const LoginForm = ({
           </button>
         </div>
         <div className="flex justify-start items-center gap-2">
-          <span className="text-blue-900">Don't have an account?</span>
+          <span className="text-blue-900 text-[14px]">
+            Don't have an account?
+          </span>
           <Link to="/register">
             <div className="flex justify-start items-center gap-2 cursor-pointer hover:underline">
-              <span className="text-blue-900 font-semibold">Sign Up</span>
+              <span className="text-blue-900 font-semibold text-[14px]">
+                Sign Up
+              </span>
               <BsBoxArrowUpRight className="mt-[-2px] text-blue-900 text-[16px]" />
             </div>
           </Link>

@@ -6,6 +6,12 @@ module.exports = {
       screens: {
         phone: { max: '767px' },
       },
+      backgroundImage: {
+        'vignette-circular-left':
+          'radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.1), transparent)',
+        'vignette-circular-right':
+          'radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.1), transparent)',
+      },
     },
   },
   plugins: [],
